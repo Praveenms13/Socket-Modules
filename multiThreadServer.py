@@ -17,7 +17,7 @@ class ClientThread(Thread):
         print("Waiting for data...")
         data = self.conn.recv(1024)
         while data:
-            print(f"From {self.addr[0]}: Received data: {data.decode()}", end="")
+            print(f"From {self.addr[0]}:{self.addr[1]}, Received data: {data.decode()}", end="")
             data = self.conn.recv(1024)      
 
  
@@ -28,6 +28,6 @@ sck.listen()
 while True:
     print(f"Waiting for a Connection, Listening on {HOST}:{PORT}")
     conn, addr = sck.accept()
-    print(f"Connected by {addr[0]} and {addr[1]}")
+    print(f"Connected by {addr[0]} on {addr[1]} backport")
     ClientThread(conn, addr).start()
   
