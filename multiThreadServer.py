@@ -4,7 +4,7 @@ import socket as s
 from threading import Thread
 
 HOST = "0.0.0.0"
-PORT = 3075
+PORT = 3076
 
 class ClientThread(Thread):
     def __init__(self, conn, addr):
