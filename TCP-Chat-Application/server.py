@@ -1,16 +1,11 @@
 import socket
 import threading
 
-# Define server host and port
-HOST = 'localhost'
-PORT = 3703
-
-# Define message format
+HOST = '0.0.0.0'
+PORT = int(input('Enter port: '))
 MESSAGE_FORMAT = '{sender}: {message}'
 
-# Define thread function to handle client connection
 def handle_client(conn, addr, clients):
-    # Add client to list of connected clients
     clients.append(conn)
     print(f'Client {addr} connected')
 
