@@ -1,21 +1,22 @@
-import socket
+import socket as s
 
-# Define server host and port
-HOST = socket.gethostname()
-PORT = int(input('Enter port number: '))
+host = s.gethostname()
+hostIP = s.gethostbyname(host)
+port = int(input("Enter port number: "))
 
-# Create client socket and connect to server
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect((HOST, PORT))
-print(f"Connected to {HOST}:{PORT}")
+client = s.socket(s.AF_INET, s.SOCK_STREAM)
+client.connect((hostIP, port))  # Connect to the hostIP variable
+data = client.recv(1024)
 
-# Continuously send messages to server
+print(f"Welcome Message: {data.decode('utf-8')} from host: {hostIP}")
+
 while True:
-    # Get message input from user
-    message = input('Enter message: ')
+    data = input("Enter data to send (Request): ")
+    client.sendall(data.encode('utf-8'))
+    if data == "exit":
+        break
+    # else:
+    #     data = client.recv(1024)
+    #     print(f"Data from server (Response): {data.decode('utf-8')}")
 
-    # Send message to server
-    client_socket.sendall(message.encode())
-
-# Close client socket
-client_socket.close()
+client.close()
