@@ -20,18 +20,18 @@ while (true) {
     socket_getpeername($client_socket, $client_address);
     echo "Connected by $client_address[0]:$client_address[1]\n";
 
-    // Receive file name from client
-    $filename = socket_read($client_socket, 1024);
-    $filename = trim($filename);
-    echo "Receiving file $filename from $client_address[0]:$client_address[1]\n";
-
+    // Receive file path from client
+    $filePath = socket_read($client_socket, 1024);
+    $filePath = trim($filePath);
+    echo "Receiving file $filePath from $client_address[0]:$client_address[1]\n";
+    $fileName = basename($filePath);
     // Check if file exists
-    if (file_exists($filename)) {
-        echo "File $filename already exists, overwriting...\n";
+    if (file_exists($fileName)) {
+        echo "File $fileName already exists, overwriting...\n";
     }
 
     // Open file for writing
-    $file = fopen($filename, "wb") or die("Failed to open file for writing");
+    $file = fopen($fileName, "wb") or die("Failed to open file for writing");
 
     // Receive file data from client and write to file
     $buffer = "";

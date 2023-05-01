@@ -10,24 +10,21 @@ socket_connect($client_socket, $host, $port) or die("Failed to connect to $host:
 
 // Get file path from user
 $filePath = readline("Enter file path to send: ");
-
-// Open file and read data
-$file = fopen($filePath, "r") or die("Failed to open file for reading");
-$fileSize = filesize($filePath);
 $fileName = basename($filePath);
+$fileSize = filesize($filePath);
 
-// send file
-socket_write($client_socket, $fileSize, strlen($fileSize));
-socket_write($client_socket, $fileName, strlen($fileName));
+// send file path and name
+socket_write($client_socket, $filePath, strlen($filePath));
+socket_write($client_socket, "\n", strlen("\n"));
 
+// send file data
 $totalBytes = 0;
 while ($totalBytes < $fileSize) {
-    $data = fread($file, 1024);
+    $data = fread(fopen($filePath, "rb"), 1024);
     socket_write($client_socket, $data, strlen($data));
     $totalBytes += strlen($data);
 }
 
-fclose($file);
 echo "File sent successfully: " . $filePath . "\n";
 
 // receive response
@@ -36,3 +33,4 @@ echo "Server response: " . $response . "\n";
 
 // Close client socket
 socket_close($client_socket);
+?>
