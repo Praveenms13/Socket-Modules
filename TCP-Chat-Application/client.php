@@ -1,7 +1,7 @@
 <?php
 
 // Define server host and port
-$host = gethostname();
+$host = '172.20.16.104'; // gethostname();
 $hostIP = gethostbyname($host);
 $port = readline("Enter port number: ");
 

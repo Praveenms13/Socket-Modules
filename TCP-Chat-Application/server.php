@@ -1,6 +1,6 @@
 <?php
 
-$host = gethostname();
+$host = '0.0.0.0'; // gethostname();
 $hostIP = gethostbyname($host);
 $port = readline("Enter port number: ");
 
