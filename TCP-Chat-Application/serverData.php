@@ -3,6 +3,7 @@
 // Define server host and port
 $host = '0.0.0.0'; //gethostname();
 $hostIP = gethostbyname($host);
+echo $hostIP;
 $port = readline("Enter port number: ");
 
 // Create server socket and bind to host and port
