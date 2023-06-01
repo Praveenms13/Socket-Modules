@@ -1,6 +1,6 @@
 import socket as s
 
-hostIP = '0.0.0.0' # s.gethostbyname(s.gethostname())
+hostIP = '0.0.0.0'#s.gethostbyname(s.gethostname())
 port = int(input("Enter port number: "))
 
 server = s.socket(s.AF_INET, s.SOCK_STREAM)
