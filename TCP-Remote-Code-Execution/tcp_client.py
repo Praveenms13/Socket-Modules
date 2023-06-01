@@ -1,6 +1,6 @@
 import socket as s
 
-hostIP = "172.20.19.159"  # s.gethostbyname(s.gethostname())
+hostIP = '172.20.19.159'#s.gethostbyname(s.gethostname())
 port = int(input("Enter port number: "))
 
 client = s.socket(s.AF_INET, s.SOCK_STREAM)
@@ -14,4 +14,8 @@ while True:
     client.sendall(data.encode("utf-8"))
     if data == "exit":
         break
+    # else:
+    #     data = client.recv(1024)
+    #     print(f"Data from server (Response): {data.decode('utf-8')}")
+
 client.close()
