@@ -18,4 +18,4 @@ while True:
     while data:
         print(f"Message From {addr[0]}:{addr[1]} => {data.decode('utf-8')}")
         # conn.sendall(data.upper())  # Send the data back to the client
-        data = conn.recv(1024)
+        data = conn.recv(1024) 
