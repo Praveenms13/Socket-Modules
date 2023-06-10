@@ -3,7 +3,7 @@ from subprocess import Popen, STDOUT, PIPE
 from threading import Thread
 
 host_ip = "0.0.0.0"
-port = 20000
+port = 1000
 con = []
 
 
@@ -58,12 +58,12 @@ server.bind((host_ip, port))
 server.listen()
 print("TCP Server Started")
 while True:
-    conn, addr = server.accept() 
-    con.append(addr[0])
+    conn, addr = server.accept()
     if addr[0] in con:
         print("Connection Rejected {}:{}".format(addr[0], addr[1]))
         conn.close()
-        continue
-    print("Connection received from {}:{}".format(addr[0], addr[1]))
-    t = MathServerThread(conn, addr)
-    t.start()
+    else:
+        con.append(addr[0])
+        print("Connection received from {}:{}".format(addr[0], addr[1]))
+        t = MathServerThread(conn, addr)
+        t.start()
