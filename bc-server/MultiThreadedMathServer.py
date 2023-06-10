@@ -20,7 +20,7 @@ class OutputThread(Thread):
                 self.conn.sendall(self.cmd.stdout.readline())
             except Exception as e:
                 print(
-                    f"Connection resest for => {self.addr[0]}:{self.addr[1]}\nError => {e}"
+                    f"Connection reset for => {self.addr[0]}:{self.addr[1]}\nError => {e}"
                 )
                 con.remove(self.addr[0])
 
@@ -48,7 +48,7 @@ class MathServerThread(Thread):
                 cmdexec.stdin.write(cmd.encode())
                 cmdexec.stdin.flush()
             except Exception as e:
-                print(f"{self.addr[0]}:{self.addr[1]}\nError => {e}")
+                print(f"Error with this connection => {self.addr[0]}:{self.addr[1]} Error => {e}")
                 self.conn.close()
                 con.remove(self.addr[0])
 
