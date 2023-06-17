@@ -3,7 +3,7 @@ from subprocess import Popen, STDOUT, PIPE
 from threading import Thread
 
 host_ip = "0.0.0.0"
-port = 1000
+port = 1001
 con = []
 
 
