@@ -3,7 +3,7 @@ from subprocess import Popen, STDOUT, PIPE
 from threading import Thread
 
 host_ip = "0.0.0.0"
-port = 1001
+port = 1002
 con = []
 
 
@@ -60,6 +60,7 @@ print("TCP Server Started")
 while True:
     conn, addr = server.accept()
     if addr[0] in con:
+        conn.sendall(b"Connection Rejected\n")
         print("Connection Rejected {}:{}".format(addr[0], addr[1]))
         conn.close()
     else:
